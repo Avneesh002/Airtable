@@ -1,4 +1,8 @@
 
+import Footer from "../Components/Footer";
+import GetStartedQuickly from "../Components/HomepageComponents.jsx/GetStartedQuickly";
+import NoCredSection from "../Components/HomepageComponents.jsx/noCredSection";
+import TrustedByTeams from "../Components/HomepageComponents.jsx/TrustedByTeams";
 import Navbar from "../Components/Navbar";
 import ConnectEverything from './../Components/HomepageComponents.jsx/Connecteverything';
 import CreateSolution from './../Components/HomepageComponents.jsx/CreateSolution';
@@ -12,6 +16,10 @@ function Homepage(){
     <ConnectEverything />
     <CreateSolution />
     <UniteEverySection />
+    <GetStartedQuickly />
+    <TrustedByTeams />
+    <NoCredSection />
+    <Footer />
     </>
 }
 
