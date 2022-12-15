@@ -7,8 +7,6 @@ import {
     IconButton,
     Button,
     Stack,
-    Collapse,
-    Icon,
     Link,
     Popover,
     PopoverTrigger,
@@ -23,20 +21,16 @@ import {
   import {
     HamburgerIcon,
     CloseIcon,
-    ChevronDownIcon,
-    ChevronRightIcon,
-    FiHome,
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
-  FiSettings,
-  FiMenu,
   } from '@chakra-ui/icons';
   import Sidebar from "./Sidebar";
-  import {Link as routerLink, NavLink } from "react-router-dom"
+  import { NavLink } from "react-router-dom";
+  import {useContext} from "react"
+  import { AuthContext } from "../Context/AuthContext";
 
-  export default function Navbar() {
+  export default function LoggedInNav() {
     const { isOpen, onToggle } = useDisclosure();
+    const {isAuth, logout} = useContext(AuthContext);
+
   
     return (
       <Box position={"sticky"} zIndex={"2"} top={"0"} >
@@ -98,37 +92,21 @@ import {
                 }}>
               Contact sales
             </Button>
-            <NavLink to="/signup"><Button
-              display={{ base: 'none', md: 'inline-flex' }}
-              size={"sm"}
-              fontSize={'sm'}
-              fontWeight={600}
-              color={'white'}
-              bg={'rgb(28, 110, 232)'}
-              href={'/signup'}
-              _hover={{
-                  bg: 'blue.700',
-                }}>
-              Sign Up for free
-            </Button>
-            </NavLink>
-                  <NavLink to="/signin"><Button
+                <NavLink><Button
                     as={'a'}
                     fontSize={'sm'}
                     fontWeight={600}
-                    variant={'link'}
-                    
+                    variant={"solid"}
+                    onClick={logout}
+                    height="34px"
                     >
                     
-                    Sign In
+                    Log Out
                   </Button>
                   </NavLink>
           </Stack>
         </Flex>
-  
-        <Collapse in={isOpen} animateOpacity>
-          <MobileNav />
-        </Collapse>
+
       </Box>
     );
   }
@@ -142,7 +120,6 @@ import {
     
     return (
       <Stack  mt={"7px"} direction={'colum'} spacing={4}>
-        {/* {NAV_ITEMS.map((navItem) => ( */}
           <Box>
             <Popover >
               <PopoverTrigger>
@@ -211,165 +188,3 @@ import {
     );
   };
   
-
-  const MobileNav = () => {
-    return (
-      <Stack
-        bg={useColorModeValue('white', 'gray.800')}
-        p={4}
-        display={{ md: 'none' }}>
-        {NAV_ITEMS.map((navItem) => (
-          <MobileNavItem key={navItem.label} {...navItem} />
-        ))}
-      </Stack>
-    );
-  };
-  
-  const MobileNavItem = ({ label, children, href }) => {
-    const { isOpen, onToggle } = useDisclosure();
-  
-    return (
-      <Stack spacing={4} onClick={children && onToggle}>
-        <Flex
-          py={2}
-          as={Link}
-          href={href ?? '#'}
-          justify={'space-between'}
-          align={'center'}
-          _hover={{
-            textDecoration: 'none',
-          }}>
-          <Text
-            fontWeight={600}
-            color={useColorModeValue('gray.600', 'gray.200')}>
-            {label}
-          </Text>
-          {children && (
-            <Icon
-              as={ChevronDownIcon}
-              transition={'all .25s ease-in-out'}
-              transform={isOpen ? 'rotate(180deg)' : ''}
-              w={6}
-              h={6}
-            />
-          )}
-        </Flex>
-  
-        <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
-          <Stack
-            mt={2}
-            pl={4}
-            borderLeft={1}
-            borderStyle={'solid'}
-            borderColor={useColorModeValue('gray.200', 'gray.700')}
-            align={'start'}>
-            {children &&
-              children.map((child) => (
-                <Link key={child.label} py={2} href={child.href}>
-                  {child.label} 
-                  <p color='gry'>{child.subLabel}</p>
-                </Link>
-              ))}
-          </Stack>
-        </Collapse>
-      </Stack>
-    );
-  };
-  
-  
-  const NAV_ITEMS= [
-    {
-      label: 'Product',
-      children: [
-        {
-          label: 'Overview',
-          subLabel:"Welcome to Airtable! Here\'s the basics",
-          href: '#',
-        },
-        {
-            label: 'Features',
-            subLabel:"Discover automation, views, reporting and more",
-            href: '#',
-          },
-          {
-            label: 'Integrations',
-            subLabel:"Bring your favourite tools into Airtable",
-            href: '#',
-          }
-          ,
-          {
-            label: 'Enterprise Overview',
-            subLabel:"see how Airtable scales for large and complex organizations",
-            href: '#',
-          }
-          ,{
-            label: 'Marketplace',
-            href: '#',
-          }
-          ,
-          {
-            label: 'Download Apps',
-            href: '#',
-          }
-          ,{
-            label: 'whats\'s new',
-            href: '#',
-          }
-          ,{
-            label: 'Pricing',
-            subLabel:"From small business to global enterprise, there\'s an Airtable plan that\'s just right for you.",
-            href: '#',
-          }
-          ,
-        ],
-    },
-    {
-      label: 'Solutions',
-      children: [
-        {
-          label: 'Job Board',
-          subLabel: 'Find your dream design job',
-          href: '#',
-        },
-        {
-          label: 'Freelance Projects',
-          subLabel: 'An exclusive list for contract work',
-          href: '#',
-        },
-      ],
-    },
-    {
-      label: 'Pricing',
-      href: '#',
-    },
-    {
-        label: 'Enterprise',
-        children: [
-          {
-            label: 'Job Board',
-            subLabel: 'Find your dream design job',
-            href: '#',
-          },
-          {
-            label: 'Freelance Projects',
-            subLabel: 'An exclusive list for contract work',
-            href: '#',
-          },
-        ],
-      },
-      {
-        label: 'Resources',
-        children: [
-          {
-            label: 'Job Board',
-            subLabel: 'Find your dream design job',
-            href: '#',
-          },
-          {
-            label: 'Freelance Projects',
-            subLabel: 'An exclusive list for contract work',
-            href: '#',
-          },
-        ],
-      },
-  ];

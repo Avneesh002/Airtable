@@ -1,6 +1,6 @@
 import { Button, Skeleton, Text, useMediaQuery } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-
+import { NavLink } from "react-router-dom";
 
 export default function ConnectEverything(){
 
@@ -47,11 +47,13 @@ const div2 ={
         <div style={div1}>
             <Text lineHeight={"65px"}  opacity="99%" fontSize={isLargerThan767 ? "6xl" : "34px"} fontWeight={"bold"}> Connect  everything. Achieve anything</Text>
             <Text lineHeight={"32px"} marginTop="6" fontSize={isLargerThan767 ? "25px" : "18px"} opacity="97%" fontWeight={"semibold"}>Accelerate work and unlock potential with powerful apps that connect your data, workflows and teams. This is how.</Text>
+            <NavLink to="/signup">
             <Button 
             _hover={{
                 bg:"blue.900"
             }}
             borderRadius={"10px"} mt={"7"} h={"47px"} bg={"rgb(28, 110, 232)"} color={"white"} fontSize="24px" size={"lg"} variant={"solid"}>Sign up for free</Button>
+            </NavLink>
         </div>
         
         <div style={div2}>

@@ -1,0 +1,9 @@
+
+.banner {
+background-image: linear-gradient(to right, #0158dc, #3251e8, #5347f2, #7335f9, #9207fc);
+;
+align-items: center;
+padding:15px;
+padding-left:36%;
+margin-top:30px
+}

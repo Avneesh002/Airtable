@@ -1,3 +1,19 @@
+
+<!--  -->
+
+1- create Action Navbar for workspace
+2- Action btn will show modal to write name of project
+3- Name will be saved to localStorage or Database and land us to working space(where team related work needs to be done)
+4- add some functions to that page
+5- click back btn
+6- pricing will be there at bottom
+7- that will land to pricing page 
+8- checkout and done!!!!!!!!!!!
+
+
+<!--  -->
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

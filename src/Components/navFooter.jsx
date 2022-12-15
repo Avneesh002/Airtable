@@ -1,35 +1,18 @@
-
+import {SiFacebook, SiInstagram, SiLinkedin, SiTwitter, SiYoutube } from "react-icons/si"
 import { useMediaQuery, Button, HStack, Stack, Divider } from '@chakra-ui/react';
 import { Text } from '@chakra-ui/react';
-import {SiFacebook, SiInstagram, SiLinkedin, SiTwitter, SiYoutube } from "react-icons/si"
-import { NavLink } from 'react-router-dom';
 
-
-export default function NoCredSection(){
+export default function NavFooter(){
 
     const [isLargerThan767] = useMediaQuery('(min-width: 767px)')
-    
-    const mainDiv = {
-        backgroundColor:"white",
-        paddingLeft:isLargerThan767 ? "25%" : "20px",
-        paddingRight:isLargerThan767 ? "30%" : "",
-        textAlign:"center",
-        paddingTop:"100px",
-    }
+
     const navStyle = {
         marginLeft:"30px",
         fontSize:"15px",
         fontWeight:"500",
         
     }
-
-    return <>
-        <div style={mainDiv}>
-
-                <Text mb={"50px"} lineHeight={isLargerThan767 ? "70px" : "40px"} fontSize={isLargerThan767 ? "64px" : "30px"} fontWeight={"500"} >300,000+ innovative companies use Airtable every day. Join them.</Text>
-                <NavLink to="/signup"><Button borderRadius={"12px"} h={"50px"} fontWeight={"500"} fontSize={"24px"} _hover={{bg:"#2750ae"}} variant={"solid"} color={"white"} backgroundColor={"#2750fd"}>Sign up for free</Button></NavLink>
-                <Text mt={"20px"} letterSpacing={"0.18px"} fontWeight={"500"} fontSize={"18px"}>No credit Card needed</Text>
-        </div>
+    return (<>
         <div>
             <Stack mb={"40px"} mt={"40px"} paddingLeft={"20px"} paddingRight={"20px"} justify={"space-between"} align={"center"} direction={isLargerThan767 ? "row" : "column"}>
                 <Stack align={"center"} direction={"row"}>
@@ -50,6 +33,6 @@ export default function NoCredSection(){
             </Stack>
                 <Divider border={"1px solid"} w={"97%"} m={"auto"} />
         </div>
-    </>
-
-} 
+    
+    </>)
+}

@@ -7,12 +7,16 @@ import Navbar from "../Components/Navbar";
 import ConnectEverything from './../Components/HomepageComponents.jsx/Connecteverything';
 import CreateSolution from './../Components/HomepageComponents.jsx/CreateSolution';
 import UniteEverySection from './../Components/HomepageComponents.jsx/UniteEveryWork';
-
+import {useContext} from "react"
+import { AuthContext } from "../Context/AuthContext";
+import LoggedInNav from './../Components/loggedInNav';
 
 function Homepage(){
 
+    const {isAuth} = useContext(AuthContext);
+
     return <>
-    <Navbar />
+    {isAuth ? <LoggedInNav /> : <Navbar />}
     <ConnectEverything />
     <CreateSolution />
     <UniteEverySection />
