@@ -1,7 +1,6 @@
 import { Button,Text, Divider,Link, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, useDisclosure } from '@chakra-ui/react';
 import React from "react"
-export default function Sidebar() {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+export default function Sidebar({isOpen, onClose, onOpen}) {
   const btnRef = React.useRef()
 
   const pProp = {
@@ -25,9 +24,9 @@ export default function Sidebar() {
   
   return (
     <>
-      <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
+      {/* <Button ref={btnRef} colorScheme='teal' >
         Open
-      </Button>
+      </Button> */}
       <Drawer
         isOpen={isOpen}
         placement='left'

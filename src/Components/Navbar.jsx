@@ -135,7 +135,8 @@ import {
     const linkColor = useColorModeValue('gray.600', 'gray.200');
     const linkHoverColor = useColorModeValue('gray.800', 'white');
     const popoverContentBgColor = useColorModeValue('white', 'gray.800');
-  
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    
     
     return (
       <Stack  mt={"7px"} direction={'colum'} spacing={4}>
@@ -151,7 +152,7 @@ import {
                   fontWeight={500}
                   color={linkColor}
                   marginRight={"5"}
-                  
+                  onClick={onOpen}
                   >
                   {navItem.label}
                 </Link>
@@ -161,7 +162,7 @@ import {
                   <PopoverContent
                   >
                     
-                  <Sidebar />
+                  <Sidebar isOpen={isOpen} onOpen={onOpen} onClose={onClose}/>
                  
                 </PopoverContent>
               )}
