@@ -1,5 +1,5 @@
 
-import { ReactNode } from 'react';
+import { ReactNode, useContext } from 'react';
 import {
   Box,
   Stack,
@@ -14,6 +14,8 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { FaCheckCircle } from 'react-icons/fa';
+import { useNavigate, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext';
 
 function PriceWrapper({ children }) {
   return (
@@ -30,6 +32,10 @@ function PriceWrapper({ children }) {
 }
 
 export default function PricingCards() {
+
+  const navigate = useNavigate();
+
+  const {isAuth} = useContext(AuthContext)
 
   return (
     <Box py={12}>
@@ -58,9 +64,11 @@ export default function PricingCards() {
               </Text>
             </HStack>
             <Box ml={"30px"} w="80%" pt={7}>
-              <Button w="full" colorScheme="red" variant="outline">
+              <NavLink to={isAuth ? "/checkout" : "/signup"}>
+                <Button w="full" colorScheme="red" variant="outline">
                 Start trial
               </Button>
+              </NavLink>
             </Box>
           </Box>
           <VStack
@@ -140,9 +148,11 @@ export default function PricingCards() {
               </HStack>
             </Box>
               <Box mb={"20px"} ml={"40px"} w="80%" pt={7}>
+              <NavLink to={isAuth ? "/checkout" : "/signup"}>
                 <Button w="full" colorScheme="messenger">
                   Try for free
                 </Button>
+                </NavLink>
               </Box>
             <VStack
               bg={useColorModeValue('gray.50', 'gray.700')}
@@ -191,9 +201,11 @@ export default function PricingCards() {
             </HStack>
           </Box>
             <Box mb={"20px"} ml={"50px"} w="80%" pt={7}>
+            <NavLink to={isAuth ? "/checkout" : "/signup"}>
               <Button w="full" colorScheme="red" variant="outline">
                 Contact Sales
               </Button>
+              </NavLink>
             </Box>
           <VStack
             bg={useColorModeValue('gray.50', 'gray.700')}

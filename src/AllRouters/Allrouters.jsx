@@ -5,6 +5,7 @@ import SignIn from "../Pages/SignIn";
 import Workplace from "../Pages/Workplace";
 import SignUp from './../Pages/SignUpPage';
 import Pricing from './../Pages/Pricing';
+import Checkout from './../Pages/Checkout';
 
 export default function AllRoutes(){
 
@@ -15,6 +16,7 @@ export default function AllRoutes(){
             <Route path="/signin" element={<SignIn/>} ></Route>
             <Route path="/workplace" element={<Workplace/>} ></Route>
             <Route path="/pricing" element={<Pricing />} ></Route>
+            <Route path="/checkout" element={<Checkout />} ></Route>
 
 
         </Routes>

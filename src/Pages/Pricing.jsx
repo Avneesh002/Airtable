@@ -8,6 +8,7 @@ import PricingCards from './../Components/PricingComponents/PricingCards';
 import Faq from './../Components/PricingComponents/Faq';
 import NavFooter from './../Components/navFooter';
 import Footer from './../Components/Footer';
+import AdditionalQuestion from "../Components/PricingComponents/AdditionalQuestion";
 
 export default function Pricing(){
 
@@ -18,6 +19,7 @@ export default function Pricing(){
         <SignUpToday />
         <PerfectPlan />
         <PricingCards />
+        <AdditionalQuestion />
         <Faq />
         <NavFooter />
         <Footer />
