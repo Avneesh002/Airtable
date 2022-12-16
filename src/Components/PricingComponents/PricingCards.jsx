@@ -66,7 +66,7 @@ export default function PricingCards() {
             <Box ml={"30px"} w="80%" pt={7}>
               <NavLink to={isAuth ? "/checkout" : "/signup"}>
                 <Button w="full" colorScheme="red" variant="outline">
-                Start trial
+                Free
               </Button>
               </NavLink>
             </Box>
@@ -140,7 +140,7 @@ export default function PricingCards() {
                   $
                 </Text>
                 <Text fontSize="5xl" fontWeight="900">
-                  29
+                  120
                 </Text>
                 <Text fontSize="3xl" color="gray.500">
                   /month
@@ -150,7 +150,7 @@ export default function PricingCards() {
               <Box mb={"20px"} ml={"40px"} w="80%" pt={7}>
               <NavLink to={isAuth ? "/checkout" : "/signup"}>
                 <Button w="full" colorScheme="messenger">
-                  Try for free
+                  Purchase
                 </Button>
                 </NavLink>
               </Box>
