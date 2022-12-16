@@ -37,9 +37,7 @@ export default function BillingSection(){
             <Text opacity={"70%"} fontWeight={"500"} fontSize={"22px"}>You've selected the pro plan, billed  <SelectMonth setBill={setBill} /> at ${bill} per user per year, or $10 per user per month.</Text>
 
             <Stack>
-            <Stack>
-                <Text></Text>
-            </Stack>
+            
 
 
 

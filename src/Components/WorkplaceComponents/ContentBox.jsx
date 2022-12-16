@@ -1,5 +1,4 @@
-import { Box, Divider, Stack } from "@chakra-ui/layout"
-import { Button, Text } from '@chakra-ui/react';
+import { Button, Text, Box, Divider, Stack } from '@chakra-ui/react';
 import {
     Accordion,
     AccordionItem,
