@@ -6,6 +6,7 @@ import Workplace from "../Pages/Workplace";
 import SignUp from './../Pages/SignUpPage';
 import Pricing from './../Pages/Pricing';
 import Checkout from './../Pages/Checkout';
+import BasePage from './../Pages/BasePage';
 
 export default function AllRoutes(){
 
@@ -17,6 +18,7 @@ export default function AllRoutes(){
             <Route path="/workplace" element={<Workplace/>} ></Route>
             <Route path="/pricing" element={<Pricing />} ></Route>
             <Route path="/checkout" element={<Checkout />} ></Route>
+            <Route path="/workbase" element={<BasePage />} ></Route>
 
 
         </Routes>

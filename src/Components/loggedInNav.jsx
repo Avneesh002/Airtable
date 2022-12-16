@@ -92,16 +92,16 @@ import {
                 }}>
               Contact sales
             </Button>
-                <NavLink><Button
+                <NavLink to={"/workplace"}><Button
                     as={'a'}
                     fontSize={'sm'}
                     fontWeight={600}
                     variant={"solid"}
-                    onClick={logout}
+                    
                     height="34px"
                     >
                     
-                    Log Out
+                    Base
                   </Button>
                   </NavLink>
           </Stack>

@@ -1,7 +1,10 @@
 
+import BillingSection from '../Components/CheckoutComponent/BillingSection';
+import ProfileNav from './../Components/profileNav';
 export default function Checkout(){
 
     return <>
-        <h1>This is your Checkout Page</h1>
+        <ProfileNav />
+        <BillingSection />
     </>
 }
