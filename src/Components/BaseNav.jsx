@@ -35,7 +35,8 @@ import {HiOutlineDatabase} from "react-icons/hi"
 import {FaUserSecret} from "react-icons/fa"
 import {AiOutlineDatabase} from "react-icons/ai"
 import {AiFillBell, AiTwotoneSave} from "react-icons/ai"
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink, useNavigate } from 'react-router-dom';
+
 import React from "react"
 import  FocusLock from "react-focus-lock"
 
@@ -177,6 +178,24 @@ export default function BaseNav() {
     alignItems:"center",
 
   }
+  const Navigate = useNavigate();
+
+  const saveBase = () => {
+
+        // fetch(`https://airtableweb.onrender.com/base`, {
+        //     method:"POST",
+        //     body:JSON.stringify({
+        //         id: Date.now()+baseName,
+        //         title: baseName,
+        //         color: baseColor
+        //     }),
+        //     headers:{
+        //         "Content-Type":"application/json"
+        //     }
+        // })
+
+        Navigate("/workplace")
+  }
 
 
   return (
@@ -200,7 +219,7 @@ export default function BaseNav() {
           <Flex alignItems={'center'}>
             <Stack _hover={{cursor:"pointer"}} style={iconDiv}>
                 
-                    <AiTwotoneSave color={baseColor} fontSize={"20px"} />
+                <AiTwotoneSave onClick={saveBase} color={baseColor} fontSize={"20px"} />
                 
 
             </Stack>

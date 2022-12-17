@@ -10,7 +10,7 @@ export default function AuthContextProvider({children}){
     const [base, setBase] = useState(false)
     const [timeVal, setTimeVal] = useState(true)
     const [baseName, setBaseName] = useState("Untitled base")
-     const [ baseColor, setBaseColor] = useState("#0F9D1F")
+    const [ baseColor, setBaseColor] = useState("#0F9D1F")
      
     
     const logout = () => {
