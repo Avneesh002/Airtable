@@ -28,7 +28,6 @@ import {
   
 } from '@chakra-ui/react';
 import { ChevronDownIcon, EditIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { AuthContext } from '../Context/AuthContext';
 import {BiLogOutCircle} from "react-icons/bi"
 import {MdOutlineAccountCircle} from "react-icons/md"
 import {HiOutlineDatabase} from "react-icons/hi"
@@ -39,11 +38,14 @@ import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 
 import React from "react"
 import  FocusLock from "react-focus-lock"
+import { AuthContext } from './../../Context/AuthContext';
 
 
 // 1. Create a text input component
 const TextInput = () => {
-    const { name, logout, baseName, setBaseName} = useContext(AuthContext);
+
+    const {setBaseColor, baseColor, baseName, setBaseName} = useContext(AuthContext);
+
     return (
       <FormControl>
         <Input value={baseName} onChange={(e) => setBaseName(e.target.value)}/>
@@ -52,13 +54,12 @@ const TextInput = () => {
   }
   
 //   2. Create the form
-  const Form = ({ firstFieldRef, onCancel}) => {
+  const Form = ({ firstFieldRef, onCancel, setBaseColor, baseColor, baseName, setBaseName}) => {
     const { onOpen, onClose, isOpen } = useDisclosure()
 
     const cancelFunc = () => {
         onCancel();
     }
-  const { name, logout, baseName, setBaseName, baseColor, setBaseColor} = useContext(AuthContext);
 
 
     const gridStyle = {
@@ -101,7 +102,7 @@ const TextInput = () => {
     }
 
     const handleSave = () => {
-      onCancel()
+        onCancel()
       // fetch(`http://localhost:3000/userdata`, {
       //       method:"PATCH",
       //       body:JSON.stringify({
@@ -179,10 +180,8 @@ const TextInput = () => {
 
 
 
-export default function BaseNav() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { name, logout, baseName, setBaseName, baseColor, setBaseColor, contacts} = useContext(AuthContext);
+export default function BaseNav({contacts, idVal}) {
+  const { name, logout, baseColor, setBaseColor, baseName, setBaseName } = useContext(AuthContext);
   const iconDiv = {
     backgroundColor:"white",
     width:"30px",
@@ -200,10 +199,10 @@ export default function BaseNav() {
     const val = date.toDateString() + ' ' + date.toLocaleTimeString()
 
 
-    await fetch (`https://airtable-cioc.onrender.com/userdata`, {
-      method:"POST",
+    await fetch (`https://airtable-cioc.onrender.com/userdata/${idVal}`, {
+      method:"PATCH",
       body: JSON.stringify({
-          "id": Date.now(),
+          "id": idVal,
           "baseTitle": baseName,
           "baseColor": baseColor,
           "date":val,

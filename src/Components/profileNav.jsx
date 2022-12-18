@@ -85,7 +85,7 @@ export default function ProfileNav() {
                   <br />
                   <MenuDivider />
                   <Stack>
-                  <MenuItem><HiOutlineDatabase />Your Bases</MenuItem>
+                  <NavLink to={"/workplace"}><MenuItem><HiOutlineDatabase />Your Bases</MenuItem></NavLink>
                   </Stack>
                   <Stack>
                   <MenuItem><MdOutlineAccountCircle /> Account</MenuItem>

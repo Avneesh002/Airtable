@@ -7,6 +7,7 @@ import SignUp from './../Pages/SignUpPage';
 import Pricing from './../Pages/Pricing';
 import Checkout from './../Pages/Checkout';
 import BasePage from './../Pages/BasePage';
+import SinglePage from './../Pages/SinglePageTable';
 
 export default function AllRoutes(){
 
@@ -19,6 +20,7 @@ export default function AllRoutes(){
             <Route path="/pricing" element={<Pricing />} ></Route>
             <Route path="/checkout" element={<Checkout />} ></Route>
             <Route path="/workbase" element={<BasePage />} ></Route>
+            <Route path="/base/:id" element={<SinglePage />} ></Route>
 
 
         </Routes>

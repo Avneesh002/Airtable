@@ -1,18 +1,16 @@
-import React, { useState, Fragment, useContext } from "react";
+import React, { useState, Fragment, useContext, useEffect } from "react";
 import { nanoid } from "nanoid";
-import ReadOnlyRow from './ReadOnlyRows';
-import EditableRow from './EditableRow';
+import SingleEditable from "./SingleEditable"
+import SingleRead from "./SingleRead"
 import {Button, Input, Heading} from "@chakra-ui/react"
-import "./tables.css";
-
-
+import "./Single.css";
 import { AuthContext } from './../../Context/AuthContext';
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-export default function BaseTable(){
-    const {contacts, setContacts} = useContext(AuthContext);
+export default function SingleTable({contacts, setContacts}){
+ 
 
-
-  console.log(contacts)
   const [addFormData, setAddFormData] = useState({
     fullName: "",
     notes: "",
@@ -66,7 +64,6 @@ export default function BaseTable(){
 
     const newContacts = [...contacts, newContact];
     setContacts(newContacts);
-    console.log(newContacts);
   };
 
   const handleEditFormSubmit = (event) => {
@@ -135,13 +132,13 @@ export default function BaseTable(){
             {contacts.map((contact) => (
               <Fragment key={contact.tableId}>
                 {editContactId === contact.tableId ? (
-                  <EditableRow
+                  <SingleEditable
                     editFormData={editFormData}
                     handleEditFormChange={handleEditFormChange}
                     handleCancelClick={handleCancelClick}
                   />
                 ) : (
-                  <ReadOnlyRow
+                  <SingleRead
                     contact={contact}
                     handleEditClick={handleEditClick}
                     handleDeleteClick={handleDeleteClick}

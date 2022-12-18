@@ -3,12 +3,14 @@ import {TbArrowBigTop} from "react-icons/tb"
 import {GiScarabBeetle} from "react-icons/gi"
 import {AiOutlineThunderbolt} from "react-icons/ai"
 import {ImCommand} from "react-icons/im"
+import {MdDelete} from "react-icons/md"
 import {RiLayoutGridLine} from "react-icons/ri"
-import { Text, Stack, Center } from '@chakra-ui/react';
+import { Text, Stack, Center, HStack, SimpleGrid } from '@chakra-ui/react';
 import styles from "./homearea.module.css"
-import {useContext} from "react";
+import {useContext, useState, useEffect} from "react";
 import { AuthContext } from "../../Context/AuthContext"
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 function EmptyText(){
 
@@ -21,42 +23,70 @@ function EmptyText(){
     </> 
 }
 
+function AppendBases({show, setShow}){
+    const [data, setData] = useState([]);
+    const navigate = useNavigate();
+
+    const getData = () => {
+
+        return axios.get(`https://airtable-cioc.onrender.com/userdata`).then((res) =>{   setShow(true)
+            setData(res.data)})
+    }
+
+    
+    useEffect(() => {
+
+        getData()
+        
+    }, [])
+
+    const deleteThis = (i) => {
+        fetch(`https://airtable-cioc.onrender.com/userdata/${i}`, {
+            method:"DELETE"
+        })
+        setTimeout(() => {
+
+            window.location.reload();
+        }, 500)
+    }
+
+    return <>
+    {data && data.map((el) => {
+            
+            return <Stack key={el.id} className={styles.cards} p={"15px"} bg={"white"} direction={"row"}>
+            <Stack onClick={({e}) => {navigate(`/base/${el.id}`)} } _hover={{border:"2px solid black ", cursor:"pointer"}} justify={"center"} align={"center"}  borderRadius={"5px"} opacity={"90%"} h={"80px"} w={"110px"} bg={el.baseColor}>
+                <TbArrowBigTop size={"25px"} fill={"white"} color={el.baseColor} />
+                   </Stack>
+                   <Stack justify={"center"} lineHeight={"16px"} pl={"10px"} direction={"column"}>
+                  <Text opacity={"90%"} fontWeight={"500"} fontSize={"15px"}>{el.baseTitle}</Text>
+                    <Text fontWeight={"500"} opacity={"70%"} w={"90%"} fontSize={"11px"}>{el.date}</Text>
+                    <MdDelete onClick={() => deleteThis(el.id)} />
+                          </Stack>
+                     </Stack>
+                     
+
+    })}
+    
+    
+    </>
+
+
+}
+
+
 function BasesFiles(){
 
     const { base } = useContext(AuthContext);
-
-    const selectStyles = {
-        fontSize:"14px",
-        backgroundColor:"transparent",
-        color:"gray",
-        width:'120px',
-        marginRight:"20px",
-        
-    }
-
-    const mainDiv1 = {
-        marginTop:"30px",
-        marginBottom:"25px"
-    }
+    
 
     
 
     return <>
-        <div style={mainDiv1}>
-            <select style={selectStyles} name="" >
-                <option>Opened by you</option>
-                <option>Shared with you</option>
-            </select>
-            <select style={selectStyles} name="" >
-                <option>Show all types</option>
-                <option>Show bases only</option>
-                <option>Show interfaces only</option>
-            </select>
-        </div>
+    
 
         <div className={styles.baseFiles} >
             
-            {base ? "" : <Center mt={"20%"}><EmptyText /></Center>}
+            {base ? <AppendBases /> : <Center mt={"20%"}><EmptyText /></Center>}
 
         </div>
     
@@ -66,6 +96,7 @@ function BasesFiles(){
 
 
 export default function HomeArea(){
+    const [show, setShow] = useState(false);
 
     const mainDiv = {
         backgroundColor:"#F9FAFB",
@@ -83,7 +114,29 @@ export default function HomeArea(){
     const divs4 = {
         backgroundColor: "#F82B60"
     }
+    const stackStyle = {
+        
+        marginTop:"40px",
+        padding:"15px",
+        boxShadow: "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
+        borderRadius:"8px",
+        paddingTop:"50px",
+        paddingBottom:"50px"
 
+    }
+    const selectStyles = {
+        fontSize:"14px",
+        backgroundColor:"transparent",
+        color:"gray",
+        width:'120px',
+        marginRight:"20px",
+        
+    }
+
+    const mainDiv1 = {
+        marginTop:"30px",
+        marginBottom:"25px"
+    }
     
     return <>
             <div style={mainDiv}>
@@ -135,7 +188,22 @@ export default function HomeArea(){
                 </Stack>
 
             </Stack>
-            <BasesFiles />
+            <div style={mainDiv1}>
+            <select style={selectStyles} name="" >
+                <option>Opened by you</option>
+                <option>Shared with you</option>
+            </select>
+            <select style={selectStyles} name="" >
+                <option>Show all types</option>
+                <option>Show bases only</option>
+                <option>Show interfaces only</option>
+            </select>
+        </div>
+        <SimpleGrid spacing={6} columns={{ base: 1, sm: 2, md: 3}} style={stackStyle}>
+            
+            <AppendBases setShow={setShow} show={show} />
+            </SimpleGrid>
+            {/* { show ? <BasesFiles /> :  } */}
             </div>
     </>
 }

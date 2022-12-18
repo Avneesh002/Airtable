@@ -12,14 +12,26 @@ import {
   import {TfiWorld} from "react-icons/tfi"
 import { NavLink } from 'react-router-dom';
 import Sidebar from './../Sidebar';
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function ContentBox(){
+const [loading, setLoading] = useState(false);
+const Navigate = useNavigate();
 const mainDiv = {
     backgroundColor: "white",
     padding:"10px",
     width:"21%",
     position:"fixed",
     
+}
+const createBase = async () => {
+    
+        Navigate("/workbase")
+    
+
+
 }
 
     return <>
@@ -67,8 +79,7 @@ const mainDiv = {
                 <Stack direction={"row"} align={"center"}>
                 <TfiWorld /><Text>Universe</Text>
                 </Stack>
-                <NavLink to={"/workbase"}><Button _hover={{bg:"blue.700"}} fontSize={"13px"} height={"35px"} width={"100%"} bg={"#347FF9"} color={"white"}>Create a base</Button>
-                </NavLink>
+                <Button onClick={createBase} _hover={{bg:"blue.700"}} fontSize={"13px"} height={"35px"} width={"100%"} bg={"#347FF9"} color={"white"}>Create a base</Button>
             </Stack>
 
         </div >
