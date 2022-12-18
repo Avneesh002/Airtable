@@ -31,12 +31,19 @@ import {
 
     const Navigate = useNavigate();
 
-    const invokeLoader = () => {
+    const invokeLoader = async () => {
 
         setLoading(true);
 
-        setIsAuth(true);
-        setName("Avneesh")
+        await fetch(`https://airtable-cioc.onrender.com/isLogged`,{
+          method:"POST",
+          body:JSON.stringify({"value":true}),
+          headers:{
+            "Content-Type": "application/json"
+          }
+        }).then((res) => res.json()).then((res) => setIsAuth(res.value))
+        
+        
         const timer = setTimeout(() => {
             setLoading(false);
             Navigate("/workplace")

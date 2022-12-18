@@ -16,7 +16,7 @@ export default function PaymentSuccess(){
 
         if(time === 0){
             setTimeVal(true)
-            navigate("/")
+            navigate("/workplace");
             clearInterval(timer);
         }
     }, 1000)
