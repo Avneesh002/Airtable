@@ -180,8 +180,8 @@ const TextInput = () => {
 
 
 
-export default function BaseNav({contacts, idVal}) {
-  const { name, logout, baseColor, setBaseColor, baseName, setBaseName } = useContext(AuthContext);
+export default function BaseNav({idVal}) {
+  const { name, logout, baseColor, setBaseColor, baseName, setBaseName, contacts } = useContext(AuthContext);
   const iconDiv = {
     backgroundColor:"white",
     width:"30px",

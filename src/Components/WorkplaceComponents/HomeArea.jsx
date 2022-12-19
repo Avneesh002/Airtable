@@ -92,7 +92,7 @@ function BasesFiles(){
 }
 
 
-export default function HomeArea(){
+export default function HomeArea({createBase}){
     const [show, setShow] = useState(false);
 
     const mainDiv = {
@@ -141,7 +141,7 @@ export default function HomeArea(){
             
             <Stack mt={"30px"} spacing={6} direction={"row"}>
 
-                <NavLink to={"/workbase"}><Stack className={styles.cards} p={"15px"} bg={"white"} direction={"row"}>
+                <Stack onClick={createBase} className={styles.cards} p={"15px"} bg={"white"} direction={"row"}>
                     <Stack _hover={{border:"2px solid #0FAC04", cursor:"pointer"}} justify={"center"} align={"center"} borderRadius={"5px"} opacity={"60%"} h={"80px"} w={"110px"} bg={"green.200"}>
                         <FaPlus size={"20px"} color="#0FAC04" />
                     </Stack>
@@ -149,7 +149,7 @@ export default function HomeArea(){
                         <Text fontSize={"15px"}>Start from scratch</Text>
                         <Text opacity={"70%"} w={"90%"} fontSize={"11px"}>Create a new blank base with custom tables, fields and views</Text>
                     </Stack>
-                </Stack></NavLink>
+                </Stack>
                 
                 <Stack className={styles.cards} p={"15px"} bg={"white"} direction={"row"}>
                     <Stack _hover={{border:"2px solid #0000EE ", cursor:"pointer"}} justify={"center"} align={"center"} borderRadius={"5px"} opacity={"60%"} h={"80px"} w={"110px"} bg={"blue.200"}>

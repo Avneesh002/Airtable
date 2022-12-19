@@ -13,6 +13,7 @@ export default function AuthContextProvider({children}){
     const [baseName, setBaseName] = useState(null)
     const [ baseColor, setBaseColor] = useState(null);
     const [contacts, setContacts] = useState(null || data);
+    const [createNewBase, setCreateNewBase] = useState(false);
     
     const checkLogin = () => {
         return axios.get(`https://airtable-cioc.onrender.com/isLogged`).then((res) => {setIsAuth(res.data.value)})
@@ -38,8 +39,8 @@ export default function AuthContextProvider({children}){
     checkLogin()
     getData()        
 
-    }, [])
-    //  console.log(name, baseName)
+    }, [createNewBase])
+ 
     
     const logout = async () => {
         await fetch(`https://airtable-cioc.onrender.com/isLogged`,{
@@ -52,6 +53,6 @@ export default function AuthContextProvider({children}){
         
     }
 
-    return <AuthContext.Provider value={{timeVal, setTimeVal, setBase, base, setIsAuth, isAuth, logout, setName, name, baseName, setBaseName, baseColor, setBaseColor, contacts, setContacts}} >{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={{setCreateNewBase, createNewBase,timeVal, setTimeVal, setBase, base, setIsAuth, isAuth, logout, setName, name, baseName, setBaseName, baseColor, setBaseColor, contacts, setContacts}} >{children}</AuthContext.Provider>
 
 } 

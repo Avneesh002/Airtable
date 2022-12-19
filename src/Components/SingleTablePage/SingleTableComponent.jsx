@@ -51,6 +51,7 @@ export default function SingleTable({contacts, setContacts}){
     setEditFormData(newFormData);
   };
 
+
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
 
@@ -64,6 +65,7 @@ export default function SingleTable({contacts, setContacts}){
 
     const newContacts = [...contacts, newContact];
     setContacts(newContacts);
+    console.log(newContacts)
   };
 
   const handleEditFormSubmit = (event) => {

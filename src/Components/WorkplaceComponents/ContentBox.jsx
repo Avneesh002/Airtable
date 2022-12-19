@@ -13,10 +13,12 @@ import {
 import { NavLink } from 'react-router-dom';
 import Sidebar from './../Sidebar';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext';
+import data from "../BaseComponent.jsx/mock-data.json"
 
-export default function ContentBox(){
+export default function ContentBox({createBase}){
 const [loading, setLoading] = useState(false);
 const Navigate = useNavigate();
 const mainDiv = {
@@ -26,13 +28,7 @@ const mainDiv = {
     position:"fixed",
     
 }
-const createBase = async () => {
-    
-        Navigate("/workbase")
-    
 
-
-}
 
     return <>
             <div style={mainDiv}>
