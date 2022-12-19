@@ -194,7 +194,7 @@ export default function BaseTable(){
           >
             <option value="">Status</option>
             <option value="Todo">Todo</option>
-            <option value="Complete">Complete</option>
+            <option value="Completed">Completed</option>
 
         </select>
         <Button colorScheme={"twitter"} w={"20%"} type="submit">Add Row</Button>

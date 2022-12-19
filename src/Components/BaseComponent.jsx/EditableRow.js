@@ -61,8 +61,8 @@ const EditableRow = ({
         opacity={"70%"}
         >
             <option>-Status-</option>
-            <option>Todo</option>
-            <option>Completed</option>
+            <option value="Todo">Todo</option>
+            <option value="Completed">Completed</option>
         </select>
       </td>
       <td style={btnArea}>
