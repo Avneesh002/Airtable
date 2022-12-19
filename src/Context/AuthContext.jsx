@@ -43,7 +43,7 @@ export default function AuthContextProvider({children}){
     
     const logout = async () => {
         await fetch(`https://airtable-cioc.onrender.com/isLogged`,{
-          method:"POST",
+          method:"PATCH",
           body:JSON.stringify({"value":false}),
           headers:{
             "Content-Type": "application/json"

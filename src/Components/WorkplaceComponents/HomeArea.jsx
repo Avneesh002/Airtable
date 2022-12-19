@@ -33,22 +33,19 @@ function AppendBases({show, setShow}){
             setData(res.data)})
     }
 
+    const deleteThis = (i) => {
+        fetch(`https://airtable-cioc.onrender.com/userdata/${i}`, {
+            method:"DELETE"
+        })
+     
+    }
     
     useEffect(() => {
 
         getData()
         
-    }, [])
+    }, [deleteThis])
 
-    const deleteThis = (i) => {
-        fetch(`https://airtable-cioc.onrender.com/userdata/${i}`, {
-            method:"DELETE"
-        })
-        setTimeout(() => {
-
-            window.location.reload();
-        }, 500)
-    }
 
     return <>
     {data && data.map((el) => {

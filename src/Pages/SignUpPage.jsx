@@ -36,7 +36,7 @@ import {
         setLoading(true);
 
         await fetch(`https://airtable-cioc.onrender.com/isLogged`,{
-          method:"POST",
+          method:"PATCH",
           body:JSON.stringify({"value":true}),
           headers:{
             "Content-Type": "application/json"
