@@ -2,7 +2,7 @@
 
  Airtable is a platform that makes it easy to build powerful, custom applications.
 
-<h1>Tech Stack</h1>
+# Tech Stack
  - HTML
  - CSS
  - Javascript
