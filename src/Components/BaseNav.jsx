@@ -200,7 +200,7 @@ export default function BaseNav() {
     const val = date.toDateString() + ' ' + date.toLocaleTimeString()
 
 
-    await fetch (`https://airtable-cioc.onrender.com/userdata`, {
+    await fetch (`https://airtable-cioc.onrender.com/api/userdata`, {
       method:"POST",
       body: JSON.stringify({
           "id": Date.now(),

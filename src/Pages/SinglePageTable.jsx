@@ -21,7 +21,7 @@ export default function SinglePage(){
     const { id } = useParams();
   
     useEffect(() => {
-      axios.get(`https://airtable-cioc.onrender.com/userdata/${id}`).then((res) => {
+      axios.get(`https://airtable-cioc.onrender.com/api/userdata/${id}`).then((res) => {
         setBaseName(res.data.baseTitle)
         setBaseColor(res.data.baseColor)
         setContacts(res.data.tableData)

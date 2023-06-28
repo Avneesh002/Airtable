@@ -35,7 +35,7 @@ import {
 
         setLoading(true);
 
-        await fetch(`https://airtable-cioc.onrender.com/isLogged`,{
+        await fetch(`https://airtable-cioc.onrender.com/api/isLogged`,{
           method:"PATCH",
           body:JSON.stringify({"value":true}),
           headers:{

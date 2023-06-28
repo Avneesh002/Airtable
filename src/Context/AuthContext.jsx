@@ -16,20 +16,21 @@ export default function AuthContextProvider({children}){
     const [createNewBase, setCreateNewBase] = useState(false);
     
     const checkLogin = () => {
-        return axios.get(`https://airtable-cioc.onrender.com/isLogged`).then((res) => {setIsAuth(res.data.value)})
+        return axios.get(`https://airtable-cioc.onrender.com/api/isLogged`).then((res) => {setIsAuth(res.data.value)})
     }
     const getData = () => {
 
     
-        return axios.get(`https://airtable-cioc.onrender.com/data`).then((res) => {
+        return axios.get(`https://airtable-cioc.onrender.com/api/data`).then((res) => {
         console.log(res.data[0].baseFile[0])
-
-    
         setName(res.data[0].name)
         setBaseName(res.data[0].baseFile[0].baseTitle)
         setBaseColor(res.data[0].baseFile[0].baseColor)
         setContacts(res.data[0].baseFile[0].tableData)
-    })
+    
+
+    
+      })
 
     }
     
@@ -43,7 +44,7 @@ export default function AuthContextProvider({children}){
  
     
     const logout = async () => {
-        await fetch(`https://airtable-cioc.onrender.com/isLogged`,{
+        await fetch(`https://airtable-cioc.onrender.com/api/isLogged`,{
           method:"PATCH",
           body:JSON.stringify({"value":false}),
           headers:{

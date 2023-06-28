@@ -1,5 +1,5 @@
 import {FaPlus} from "react-icons/fa"
-import {TbArrowBigTop} from "react-icons/tb"
+import {TbArrowBigDown} from "react-icons/tb"
 import {GiScarabBeetle} from "react-icons/gi"
 import {AiOutlineThunderbolt} from "react-icons/ai"
 import {ImCommand} from "react-icons/im"
@@ -29,12 +29,12 @@ function AppendBases({show, setShow}){
 
     const getData = () => {
 
-        return axios.get(`https://airtable-cioc.onrender.com/userdata`).then((res) =>{   setShow(true)
+        return axios.get(`https://airtable-cioc.onrender.com/api/userdata`).then((res) =>{   setShow(true)
             setData(res.data)})
     }
 
     const deleteThis = (i) => {
-        fetch(`https://airtable-cioc.onrender.com/userdata/${i}`, {
+        fetch(`https://airtable-cioc.onrender.com/api/userdata/${i}`, {
             method:"DELETE"
         })
      
@@ -52,7 +52,7 @@ function AppendBases({show, setShow}){
             
             return <Stack key={el.id} className={styles.cards} p={"15px"} bg={"white"} direction={"row"}>
             <Stack onClick={({e}) => {navigate(`/base/${el.id}`)} } _hover={{border:"2px solid black ", cursor:"pointer"}} justify={"center"} align={"center"}  borderRadius={"5px"} opacity={"90%"} h={"80px"} w={"110px"} bg={el.baseColor}>
-                <TbArrowBigTop size={"25px"} fill={"white"} color={el.baseColor} />
+                <TbArrowBigDown size={"25px"} fill={"white"} color={el.baseColor} />
                    </Stack>
                    <Stack justify={"center"} lineHeight={"16px"} pl={"10px"} direction={"column"}>
                   <Text opacity={"90%"} fontWeight={"500"} fontSize={"15px"}>{el.baseTitle}</Text>
@@ -153,7 +153,7 @@ export default function HomeArea({createBase}){
                 
                 <Stack className={styles.cards} p={"15px"} bg={"white"} direction={"row"}>
                     <Stack _hover={{border:"2px solid #0000EE ", cursor:"pointer"}} justify={"center"} align={"center"} borderRadius={"5px"} opacity={"60%"} h={"80px"} w={"110px"} bg={"blue.200"}>
-                        <TbArrowBigTop size={"25px"} fill={"#0000EE "} color="#0000EE " />
+                        <TbArrowBigDown size={"25px"} fill={"#0000EE "} color="#0000EE " />
                     </Stack>
                     <Stack justify={"center"} lineHeight={"16px"} pl={"10px"} direction={"column"}>
                         <Text fontSize={"15px"}>Quickly Upload</Text>

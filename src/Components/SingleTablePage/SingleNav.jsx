@@ -199,7 +199,7 @@ export default function BaseNav({idVal}) {
     const val = date.toDateString() + ' ' + date.toLocaleTimeString()
 
 
-    await fetch (`https://airtable-cioc.onrender.com/userdata/${idVal}`, {
+    await fetch (`https://airtable-cioc.onrender.com/api/userdata/${idVal}`, {
       method:"PATCH",
       body: JSON.stringify({
           "id": idVal,
